@@ -1,7 +1,45 @@
 <?php
 $is_auth = rand(0, 1);
-
 $user_name = 'Aleksandr'; // укажите здесь ваше имя
+$categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
+$items = [
+    [
+        "name" => "2014 Rossignol District Snowboard",
+        "category" => "Доски и лыжи",
+        "price" => 10999,
+        "picture" => "img/lot-1.jpg"
+    ],
+    [
+        "name" => "DC Ply Mens 2016/2017 Snowboard",
+        "category" => "Доски и лыжи",
+        "price" => 159999,
+        "picture" => "img/lot-2.jpg"
+    ],
+    [
+        "name" => "Крепления Union Contact Pro 2015 года размер L/XL",
+        "category" => "Крепления",
+        "price" => 8000,
+        "picture" => "img/lot-3.jpg"
+    ],
+    [
+        "name" => "Ботинки для сноуборда DC Mutiny Charocal",
+        "category" => "Ботинки",
+        "price" => 10999,
+        "picture" => "img/lot-4.jpg"
+    ],
+    [
+        "name" => "Куртка для сноуборда DC Mutiny Charocal",
+        "category" => "Одежда",
+        "price" => 7500,
+        "picture" => "img/lot-5.jpg"
+    ],
+    [
+        "name" => "Маска Oakley Canopy",
+        "category" => "Разное",
+        "price" => 5400,
+        "picture" => "img/lot-6.jpg"
+    ]
+];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -54,56 +92,11 @@ $user_name = 'Aleksandr'; // укажите здесь ваше имя
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <?php
-            $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
-            $items = [
-                [
-                    "name" => "2014 Rossignol District Snowboard",
-                    "category" => "Доски и лыжи",
-                    "price" => 10999,
-                    "picture" => "img/lot-1.jpg"
-                ],
-                [
-                    "name" => "DC Ply Mens 2016/2017 Snowboard",
-                    "category" => "Доски и лыжи",
-                    "price" => 159999,
-                    "picture" => "img/lot-2.jpg"
-                ],
-                [
-                    "name" => "Крепления Union Contact Pro 2015 года размер L/XL",
-                    "category" => "Крепления",
-                    "price" => 8000,
-                    "picture" => "img/lot-3.jpg"
-                ],
-                [
-                    "name" => "Ботинки для сноуборда DC Mutiny Charocal",
-                    "category" => "Ботинки",
-                    "price" => 10999,
-                    "picture" => "img/lot-4.jpg"
-                ],
-                [
-                    "name" => "Куртка для сноуборда DC Mutiny Charocal",
-                    "category" => "Одежда",
-                    "price" => 7500,
-                    "picture" => "img/lot-5.jpg"
-                ],
-                [
-                    "name" => "Маска Oakley Canopy",
-                    "category" => "Разное",
-                    "price" => 5400,
-                    "picture" => "img/lot-6.jpg"
-                ]
-            ];
-                ?>
-                <?php
-                $index = 0;
-                $num_items = count($categories);
-                while($index < $num_items): ?>
+                <?php foreach ($categories as $value): ?>
                 <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?=$categories[$index]; ?></a>
+                    <a class="promo__link" href="pages/all-lots.html"><?=$value; ?></a>
                 </li>
-                <?php $index++; ?>
-                <? endwhile; ?>
+                <?php endforeach; ?>
             </ul>
         </section>
         <section class="lots">
@@ -141,15 +134,11 @@ $user_name = 'Aleksandr'; // укажите здесь ваше имя
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <?php
-            $index = 0;
-            $num_items = count($categories);
-            while($index < $num_items): ?> 
+            <?php foreach ($categories as $value): ?> 
             <li class="nav__item">
-                <a href="pages/all-lots.html"><?=$categories[$index]; ?></a>
+                <a href="pages/all-lots.html"><?=$value; ?></a>
             </li>
-            <?php $index++; ?>
-            <? endwhile; ?>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
