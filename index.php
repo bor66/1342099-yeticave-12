@@ -127,7 +127,7 @@ function get_cost($number) {
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=get_cost($number); ?></span>
+                                <span class="lot__cost"><?=get_cost($value["price"]); ?></span>
                             </div>
                             <div class="lot__timer timer">
                                 12:23
