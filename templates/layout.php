@@ -1,4 +1,3 @@
-<?php include ("main.php"); ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -54,7 +53,7 @@
             <!--заполните этот список из массива категорий-->
             <?php foreach ($categories as $value): ?> 
             <li class="nav__item">
-                <a href="pages/all-lots.html"><?=$value; ?></a>
+            <a href="pages/all-lots.html"><?=strip_tags($value); ?></a>
             </li>
             <?php endforeach; ?>
         </ul>

@@ -55,6 +55,6 @@ function get_cost($number) {
 };
 
 $page_content = include_template('main.php', ['categories' => $categories, 'items' => $items]);
-$layout_content = include_template('layout.php', ['main' => $page_content, 'user' => $user_name, 'title' => $title, 'categories' => $categories, 'items' => $items]);
+$layout_content = include_template('layout.php', ['page_content' => $page_content, 'user_name' => $user_name, 'title' => $title, 'categories' => $categories, 'is_auth' => $is_auth]);
 print($layout_content);
 ?>
