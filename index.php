@@ -1,4 +1,5 @@
 <?php
+include ('helpers.php');
 $is_auth = rand(0, 1);
 $user_name = 'Aleksandr'; // укажите здесь ваше имя
 $title = 'Главная';
@@ -53,7 +54,7 @@ function get_cost($number) {
     return $cost . ' ₽';
 };
 
-$page_content = include_template('templates\main.php', ['categories' => $categories, 'items' => $items]);
-$layout_content = include_template('templates\layout.php', ['main' => $page_content, 'user' => $user_name, 'title' => $title]);
+$page_content = include_template('main.php', ['categories' => $categories, 'items' => $items]);
+$layout_content = include_template('layout.php', ['main' => $page_content, 'user' => $user_name, 'title' => $title, 'categories' => $categories, 'items' => $items]);
 print($layout_content);
 ?>

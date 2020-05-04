@@ -1,3 +1,4 @@
+<?php include ("main.php"); ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
