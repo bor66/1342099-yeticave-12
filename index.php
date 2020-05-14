@@ -64,14 +64,15 @@ function countdown($insp_date) {
     $time_diff = strtotime($insp_date) - time();
     if ($time_diff > 0) {
         $hours = floor($time_diff / 3600);
+        $hours = str_pad($hours, 2, "0", STR_PAD_LEFT);
         $minutes = floor(($time_diff % 3600) / 60);
-        // $time = [$hours, $minutes];
-    // return $time[0] . ':' . $time[1];
-    return $hours . ' часов ' . $minutes . ' минут';
+        $minutes = str_pad($minutes, 2, "0", STR_PAD_LEFT);
+        $time = [$hours, $minutes];
+        return $time;
 } else {
-        $time_over = [0, 0];
-        return $time_over[0] . ':' . $time_over[1];
-}
+        $time_over = ['00', '00'];
+        return $time_over;
+        }
 }
 
 $page_content = include_template('main.php', ['categories' => $categories, 'items' => $items]);
