@@ -65,14 +65,13 @@ function countdown($insp_date) {
     if ($time_diff > 0) {
         $hours = floor($time_diff / 3600);
         $hours = str_pad($hours, 2, "0", STR_PAD_LEFT);
-        $minutes = floor(($time_diff % 3600) / 60);
+        $minutes = ceil(($time_diff % 3600) / 60);
         $minutes = str_pad($minutes, 2, "0", STR_PAD_LEFT);
         $time = [$hours, $minutes];
-        return $time;
-} else {
-        $time_over = ['00', '00'];
-        return $time_over;
-        }
+}  else {
+        $time = ['00', '00'];
+ }
+    return $time;
 }
 
 $page_content = include_template('main.php', ['categories' => $categories, 'items' => $items]);
