@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS lots (
     expiration_date TIMESTAMP NOT NULL,
     step_sum DECIMAL (10, 2) UNSIGNED NOT NULL,
     author_id INT NOT NULL,
-    winner_id INT NOT NULL,
+    winner_id INT,
     category_id INT NOT NULL
 );
 
