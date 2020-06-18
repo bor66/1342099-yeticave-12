@@ -3,51 +3,18 @@ include ('helpers.php');
 $is_auth = rand(0, 1);
 $user_name = 'Aleksandr'; // укажите здесь ваше имя
 $title = 'Главная';
-$categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
-$items = [
-    [
-        "name" => "2014 Rossignol District Snowboard",
-        "category" => "Доски и лыжи",
-        "price" => 10999,
-        "picture" => "img/lot-1.jpg",
-        "expiration date" => "2020-05-20"
-    ],
-    [
-        "name" => "DC Ply Mens 2016/2017 Snowboard",
-        "category" => "Доски и лыжи",
-        "price" => 159999,
-        "picture" => "img/lot-2.jpg",
-        "expiration date" => "2020-06-15"
-    ],
-    [
-        "name" => "Крепления Union Contact Pro 2015 года размер L/XL",
-        "category" => "Крепления",
-        "price" => 8000,
-        "picture" => "img/lot-3.jpg",
-        "expiration date" => "2020-06-23"
-    ],
-    [
-        "name" => "Ботинки для сноуборда DC Mutiny Charocal",
-        "category" => "Ботинки",
-        "price" => 10999,
-        "picture" => "img/lot-4.jpg",
-        "expiration date" => "2020-06-25"
-    ],
-    [
-        "name" => "Куртка для сноуборда DC Mutiny Charocal",
-        "category" => "Одежда",
-        "price" => 7500,
-        "picture" => "img/lot-5.jpg",
-        "expiration date" => "2020-07-10"
-    ],
-    [
-        "name" => "Маска Oakley Canopy",
-        "category" => "Разное",
-        "price" => 5400,
-        "picture" => "img/lot-6.jpg",
-        "expiration date" => "2020-07-25"
-    ]
-];
+
+$con = mysqli_connect("localhost", "root", "", "yeticave");
+mysqli_set_charset($con, "utf8");
+
+$sql_lots = "SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
+LEFT JOIN bet b ON b.lot_id = l.id WHERE l.expiration_date > NOW() ORDER BY l.add_date DESC";
+$result_lots = mysqli_query($con, $sql_lots);
+$rows_lots = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
+
+$sql_categories = "SELECT name FROM categories";
+$result_lots = mysqli_query($con, $sql_categories);
+$rows_categories = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
 
 function get_cost($number) {
     $cost;
@@ -74,7 +41,7 @@ function countdown($insp_date) {
     return $time;
 }
 
-$page_content = include_template('main.php', ['categories' => $categories, 'items' => $items]);
-$layout_content = include_template('layout.php', ['page_content' => $page_content, 'user_name' => $user_name, 'title' => $title, 'categories' => $categories, 'is_auth' => $is_auth]);
+$page_content = include_template('main.php', ['categories' => $rows_categories, 'items' => $rows_lots]);
+$layout_content = include_template('layout.php', ['page_content' => $page_content, 'user_name' => $user_name, 'title' => $title, 'categories' => $rows_categories, 'is_auth' => $is_auth]);
 print($layout_content);
 ?>
