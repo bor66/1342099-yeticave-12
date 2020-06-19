@@ -17,6 +17,8 @@ INSERT INTO lots (name, add_date, description, image_link, start_price, expirati
 VALUES ('Куртка для сноуборда DC Mutiny Charocal', '2020-06-03 18:09:34', 'Теплая и лёгкая куртка', 'img/lot-5.jpg', 7500, '2020-07-10 00:00:00', 200, 3, NULL, 4);
 INSERT INTO lots (name, add_date, description, image_link, start_price, expiration_date, step_sum, author_id, winner_id, category_id)
 VALUES ('Маска Oakley Canopy', '2020-06-04 15:55:25', 'Стильная маска', 'img/lot-6.jpg', 5400, '2020-07-25 12:00:00', 100, 3, 2, 6);
+INSERT INTO lots (name, add_date, description, image_link, start_price, expiration_date, step_sum, author_id, winner_id, category_id)
+VALUES ('Лыжи с палками Noname', '2020-06-18 23:30:00', 'Обычные лыжи', 'img/lot-7.png', 10000, '2020-08-01 12:00:00', 1000, 3, NULL, 1);
 
 INSERT INTO users (reg_date, email, name, password, contact_inf) 
 VALUES ('2020-02-01 12:11:42', 'ivan_1970_123@)mails.ru', 'Иван', '1234567', 'телефон: 8-900-1234567');
@@ -36,7 +38,7 @@ VALUES ('2020-06-05 19:22:19', 5500, 2, 6);
 SELECT name FROM categories;
 
 -- получить самые новые, открытые лоты с названием, стартовой ценой, ссылкой на изображение, текущей ценой и названием категории
-SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category FROM lots l JOIN categories c ON c.id = l.category_id
+SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
 LEFT JOIN bet b ON b.lot_id = l.id WHERE l.expiration_date > NOW() ORDER BY l.add_date DESC;
 
 -- показать лот с названием категории по его id
