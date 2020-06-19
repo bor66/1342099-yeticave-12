@@ -7,12 +7,12 @@ $title = 'Главная';
 $con = mysqli_connect("localhost", "root", "", "yeticave");
 mysqli_set_charset($con, "utf8");
 
-$sql_lots = "SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, c.code, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
+$sql_lots = "SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
 LEFT JOIN bet b ON b.lot_id = l.id WHERE l.expiration_date > NOW() ORDER BY l.add_date DESC";
 $result_lots = mysqli_query($con, $sql_lots);
 $rows_lots = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
 
-$sql_categories = "SELECT name FROM categories";
+$sql_categories = "SELECT name, code FROM categories";
 $result_lots = mysqli_query($con, $sql_categories);
 $rows_categories = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
 
