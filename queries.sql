@@ -38,7 +38,7 @@ VALUES ('2020-06-05 19:22:19', 5500, 2, 6);
 SELECT name FROM categories;
 
 -- получить самые новые, открытые лоты с названием, стартовой ценой, ссылкой на изображение, текущей ценой и названием категории
-SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
+SELECT l.name, l.start_price, l.image_link, b.sum_price, c.name category, c.code, l.expiration_date FROM lots l JOIN categories c ON c.id = l.category_id
 LEFT JOIN bet b ON b.lot_id = l.id WHERE l.expiration_date > NOW() ORDER BY l.add_date DESC;
 
 -- показать лот с названием категории по его id
