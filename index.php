@@ -13,8 +13,8 @@ $result_lots = mysqli_query($con, $sql_lots);
 $rows_lots = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
 
 $sql_categories = "SELECT name, code FROM categories";
-$result_lots = mysqli_query($con, $sql_categories);
-$rows_categories = mysqli_fetch_all($result_lots, MYSQLI_ASSOC);
+$result_categories = mysqli_query($con, $sql_categories);
+$rows_categories = mysqli_fetch_all($result_categories, MYSQLI_ASSOC);
 
 function get_cost($number) {
     $cost;
